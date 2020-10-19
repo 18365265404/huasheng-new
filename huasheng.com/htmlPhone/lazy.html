@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <title>This is a ajax test</title>
+		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="../js/jquery.lazy.ajax.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="../js/jquery.lazy.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.lazy-box{
+				/*display: flex; flex-direction: column;*/
+			}
+			.lazy-box img{
+				margin-top: 100px;
+			}
+		</style>
+        <!--<script type="text/javascript">
+            $(function() {
+                url = $.ajax({
+                    type: "get",
+                    url: "img_url.txt",
+                    async: true,
+                    success: function() {
+                        $("img.lazy").attr("data-original", url.responseText);
+                        $("img.lazy").lazyload({
+                            effect: "fadeIn",
+                        });
+                    }
+                });
+            });
+        </script>-->
+        <!--<link rel="stylesheet" href="css/img.css" />-->
+    </head>
+
+    <body style="">
+    	<div style="height: 900px;background: #20C997;">
+    		
+    	</div>
+    	<div class="lazy-box">
+    		<!--<img alt="" width="640" height="480" data-original="img/test.jpg" />-->
+	    	<img class="lazy" width="110" height="480" data-original="../img/baby_ex.png">
+	        <img class="lazy" width="11" height="480" data-original="../img/business_img.png">
+	        <img class="lazy" width="110" height="480" data-original="../img/baby_ex3.png">
+	        <img class="lazy" width="110" height="480" data-original="../img/banner2.png">
+	        <img class="lazy" width="110" height="480" data-original="../img/bg_apple2.png">
+	        <img class="lazy" width="110" height="480" data-original="../img/bg_show.png">
+    	</div>
+        
+        
+        <script type="text/javascript">
+        	$(function() {
+			$("lazy-box").lazyload(function(){
+				alert()
+			});
+			});
+        </script>
+    </body>
+
+</html>
+
+
+

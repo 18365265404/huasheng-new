@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../css/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/my-style.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+	</head>
+	<script type="text/javascript">
+		
+	if(IsPC()){
+		
+	}else{
+		location.href="../index.html";
+	}
+
+		
+		function IsPC() {
+		   var userAgentInfo = navigator.userAgent;
+		   var Agents = ["Android", "iPhone",
+		      "SymbianOS", "Windows Phone",
+		      "iPad", "iPod"];
+		   var flag = true;
+		   for (var v = 0; v < Agents.length; v++) {
+		      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		         flag = false;
+		         break;
+		      }
+		   }
+		   return flag;
+		}
+		
+	</script>
+	<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/url.js" type="text/javascript" charset="utf-8"></script>
+	
+			<!--定位城市，和ip-->
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/cityList.js" type="text/javascript" charset="utf-8"></script>
+	
+	<style type="text/css">
+		/*banner小点*/
+		.swiper-pagination-bullet{
+		    width:20px;
+		    height:20px;
+		}
+		.swiper-pagination-bullet-active{
+		    background: #FD5F57;
+		}
+	</style>	
+	
+	<body style="background: #FAFAFA;">
+		<header class="header"></header>
+		<script type="text/javascript">
+			$(function(){
+				$(".header").load("header2.html")
+			})
+		</script>
+		<!--轮播图-->
+		<div class="home-banner">
+			   <!---------------轮播图---------------------->
+		  <div id="swiper_container" class="swiper-container  swiper-container2">
+		    <div class="swiper-wrapper swiper-wrapper2">
+		    	<!--<div class="swiper-slide" style=" background: url(../img/banner.png);">
+				</div>
+				<div class="swiper-slide" style=" background: url(../img/banner2.png)">
+				</div>-->
+		    </div>
+			<div class="swiper-pagination" style=""></div>
+		
+		  </div>
+		</div>	
+
+		<div class="business business-img-list layout">
+			<!--<img src="../img/business_img.png"/>-->
+			
+		</div>
+			
+		
+		<!--婚礼菜系flag, 此处可以公用-->
+		<div class="cookie-flag layout cookie-flag-detail" style="margin-top: -10px;">
+			<img src="../img/buniess_flag.png"/>
+
+		</div>
+		<ul class="business-list layout">
+			
+			<!--<li>
+				<img src="../img/cookie_ex.png"/>
+				<p class="font20">
+					大型励志综艺《极限挑战》
+					第三季收官之战取景录制
+				</p>
+			</li>-->
+
+		</ul>
+
+		
+		<!--底部黑色-->
+		<footer class="footer"></footer>
+		<script type="text/javascript">
+			$(function(){
+				$(".footer").load("footer.html")
+			})
+		</script>
+		
+<script type="text/javascript">
+/****************************business banner******************************************/  
+			var pamasCitys= makeCity()
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByDetailsCarousel",
+		    dataType:"json",
+			data:{
+//		    	"cityCode":Pcity
+				"cityCode":pamasCitys,
+				"type":"4"
+		    	},    //请求参数		
+		    success: function(data) {
+		    if(data.status=='503'){
+					window.location.href='error.html'
+				}
+		    console.log("商务宴banner",data)
+		    
+		    let bannerList=data.data;   
+		    let bannerStr=""
+		    for(let i=0;i<bannerList.length;i++){
+		    	bannerStr+=`
+		    				<div class="swiper-slide" style=" background: url(${QiNiu}${bannerList[i].url});"></div>
+		    				`
+		    				
+		    }
+		    $(".swiper-wrapper").html(bannerStr)
+//		    swiper-wrapper
+		    swiperMove(bannerList)
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});
+			
+			
+/****************************baby content******************************************/  
+			var getHref = window.location.href;
+			let  getId=getHref.split("?")[1].split("=")[1];
+//			alert(getId)
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByOtherPartyDetails",
+		    dataType:"json",
+			data:{
+					id:getId
+		    	},    //请求参数		
+		    success: function(data) {
+		   
+		    console.log("商务宴conentet",data)
+		    //*********************************商务宴conentet前四个**********************************************************************
+		    let businessBList=data.data.splice(0,4);  
+		    console.log("0000000000000000000000000000000000000",businessBList)
+		    let businessBStr=""
+		    for(let i=0;i<businessBList.length;i++){
+		    	businessBStr+=`
+							<img src="${QiNiu}${businessBList[i].url}"/>
+							`
+		    				
+		    }
+		    $(".business-img-list").html(businessBStr)
+		    //*********************************商务宴conentet后面**********************************************************************
+		    
+		    let businessAList=data.data;  
+		    console.log("111111111111111111111111111111111111111111",businessAList)
+
+		    let businessAStr=""
+		    for(let i=0;i<businessAList.length;i++){
+		    	businessAStr+=`
+								<li>
+									<img src="${QiNiu}${businessAList[i].url}"/>
+									<p class="font20">
+										${businessAList[i].description}
+									</p>
+								</li>		
+								`
+		    				
+		    }
+		    $(".business-list").html(businessAStr)
+//		    swiper-wrapper
+		    
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});			
+</script>		
+	</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../css/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/my-style.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+	</head>
+	<script type="text/javascript">
+		
+	if(IsPC()){
+		
+	}else{
+		location.href="../index.html";
+	}
+
+		
+		function IsPC() {
+		   var userAgentInfo = navigator.userAgent;
+		   var Agents = ["Android", "iPhone",
+		      "SymbianOS", "Windows Phone",
+		      "iPad", "iPod"];
+		   var flag = true;
+		   for (var v = 0; v < Agents.length; v++) {
+		      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		         flag = false;
+		         break;
+		      }
+		   }
+		   return flag;
+		}
+		
+	</script>
+	<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/url.js" type="text/javascript" charset="utf-8"></script>
+	<body>
+		<div class="team-content layout">
+			<!--<img  src="../img/bg_apple2.png"/>-->
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+
+/****************************intro content******************************************/  
+
+			var pamasCityNs= makeCity()
+
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByServiceTeam",
+		    dataType:"json",
+			data:{
+				"cityCode":pamasCityNs,
+
+		    	},    //请求参数		
+		    success: function(data) {
+			if(data.status=='503'){
+					window.location.href='error.html'
+				}
+		   
+		    console.log("team========================== conentet",data)
+		    
+
+		    let teamList=data.data;   
+		    let teamStr=""
+		    for(let i=0;i<teamList.length;i++){
+		    	teamStr+=`
+						<img  src="${QiNiu}${teamList[i].url}"/>`
+		    				
+		    }
+		    $(".team-content").html(teamStr)
+//		    swiper-wrapper
+		    
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});			
+
+	
+	</script>
+</html>

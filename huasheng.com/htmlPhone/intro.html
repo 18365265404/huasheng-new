@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../css/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/my-style.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+	</head>
+	<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/url.js" type="text/javascript" charset="utf-8"></script>
+	<body>
+		<div style="overflow-y:hidden ; height: 620px;" class="intro-content layout2">
+			
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+/****************************intro content******************************************/  
+
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByCompanyProfile",
+		    dataType:"json",
+			data:{
+					
+		    	},    //请求参数		
+		    success: function(data) {
+		   
+		    console.log("intro conentet",data)
+		    if(data.status=='503'){
+				window.location.href='error.html'
+			}
+//			alert(data)
+		    let introData=data.data;   
+		    let introStr=""
+		    console.log("=========================",data.data)
+			if(data.data!=undefined){
+				
+			
+		    	introStr+=`
+						<img src="${QiNiu}${introData.url}"/>
+						<div class="intro-text font20">
+							<p>
+								${introData.descriptionOne}
+							</p>
+							<p>
+								${introData.descriptionTwo}
+							</p>
+							<p>
+								${introData.descriptionThree}
+							</p>
+						</div>	
+		    	`
+		    				
+
+		    $(".intro-content").html(introStr)
+		    
+		   	}
+
+		    
+		    },
+		    error: function() {
+		        
+		    	}
+			});			
+
+	</script>
+</html>

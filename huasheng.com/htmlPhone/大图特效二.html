@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+		<meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/my-style.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+	</head>
+	<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Whx6Yj0BRwmThtBsRFgGUypivemF6gt9"></script>
+	<script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+	
+	<style>
+		.home-picture2{
+
+			height: 6180px;
+			background: #FAFAFA;
+			position: relative;
+			overflow: hidden;
+
+		}
+		/*第一个盒子*/
+		.home-picture2-box1{
+			overflow: hidden;
+			height: 1080px;
+			width: 100%;
+		}
+		/*第一个盒子中的小盒子*/
+		.fixed-box1{
+			width: 100%;
+			height: 1080px;
+			position: relative;
+		}
+		
+		.fixed-box1-fixed{
+			width: 100%;
+			position: fixed;
+			left: 0;
+			bottom: 0;
+		}
+		
+		.fixed-box1 img{
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.fixed-box1 img:nth-child(1){
+			z-index: 1003;
+			opacity: 1;
+		}
+		.fixed-box1 img:nth-child(2){
+			opacity: 1;
+			z-index: 1002;
+		}
+		.fixed-box1 img:nth-child(3){
+
+			opacity: 1;
+			z-index: 1001;
+		}
+		/*放字的盒子*/
+		.fixed-box2{
+
+			width: 100%;
+			position: absolute;
+			top: 1080px;
+			left: 0;
+			z-index: 1000;
+			height: 4480px;
+		}
+		.fixed-box2-text{
+			overflow: hidden;
+			
+			height: 100%;
+			padding-left: 289px;
+			box-sizing: border-box;
+			padding-top: 200px;
+			height: 1700px;
+
+		}
+		/*第一组字*/
+		.fixed-box2-text1{
+			/*background: #D6D8DB;*/
+			
+		}
+		.fixed-box2-text p:nth-child(1){
+			float: left;
+			width: 214px;
+			height: 70px;
+			letter-spacing: 2px;
+			border-bottom: 3px solid white;
+		}
+		.fixed-box2-text p span{
+			color: black;
+		}
+		.fixed-box2-text p:nth-child(1) span:nth-child(1){
+			/*margin-top: 000px;*/ 
+			font-size: 45px;
+
+			font-weight: 700;
+		}
+		.fixed-box2-text  p:nth-child(1) span:nth-child(2) {
+			font-size: 25px;
+			font-weight: 600;
+		}
+		.fixed-box2-text  p:nth-child(2){
+			line-height: 120px;
+			color: black;
+			width: 320px;
+			font-weight: 700;
+			font-size: 98px;
+			margin-top: 130px;
+		}
+		.fixed-box2-text  p:nth-child(3){
+			letter-spacing: 7px;
+			font-size: 25px;
+			color: black;
+			width: 456px;
+			font-weight: 700;
+			font-size: 28px;
+			margin-top: 55px;
+		}
+		/*第二组字*/
+		.fixed-box2-text2{
+			/*background: #ABDDE5;*/
+		}
+		/*第三组字*/
+		.fixed-box2-text3{
+
+			position: relative;
+
+
+		}
+		
+		.fixed-box2-text3 img{
+			opacity: 0;
+			width: 100%;
+			height: 1700px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.fixed-box2-text3 p{
+		
+		}
+    </style>
+    	
+	<body>
+		<header class="home-picture2-before" style="background: gray; height: 1100px; width: 100%;">
+			999 
+		</header>
+		<div class="home-picture2">
+			<div class="home-picture2-box1">
+				<div class="fixed-box1">
+					<img src="../img/bg_show.png">
+					<img src="../img/bg_show.png">
+					<img src="../img/bg_picture.png"/>
+				</div>
+			</div>
+			
+			<div class="fixed-box2">
+				<div class="fixed-box2-text1 fixed-box2-text">
+					<p><span>#01,</span><span>华艺装饰</span></p>
+					<p>专属花艺团队</p>
+					<p>用设计和细心为您锦上添花</p>
+				</div>
+				<div class="fixed-box2-text2 fixed-box2-text">
+					<p><span>#02,</span><span>华艺装饰</span></p>
+					<p>专属花艺团队</p>
+					<p>用设计和细心为您锦上添花</p>
+				</div>
+				<div class="fixed-box2-text3 fixed-box2-text">
+					<p><span>#03,</span><span>华艺装饰</span></p>
+					<p>专属花艺团队</p>
+					<p>用设计和细心为您锦上添花</p>
+					<img src="../img/bg_picture.png">
+				</div>
+			</div>
+		</div>
+		
+		<footer style="width: 100%;height: 2500px; background: coral; font-size: 60px; line-height: 500px;text-align: center;">
+			我是尾巴
+		</footer>
+	</body>
+		<script type="text/javascript">
+	
+		window.onscroll = function(){
+			
+			
+			console.log(distance('.home-picture2-before'),$(".fixed-box1 img").eq(0).css("opacity"),$(".fixed-box1 img").eq(1).css("opacity"),$(".fixed-box1 img").eq(2).css("opacity"))
+			 //大图特效字效果
+			 if(distance('.home-picture2-before')<0){
+			 	
+			 
+			 }else if(distance('.home-picture2-before')>0 && distance('.home-picture2-before')<=1080){
+					$(".fixed-box1 img").eq(0).css("z-index",1006);
+					$(".fixed-box1 img").eq(1).css("z-index",1002);
+					$(".fixed-box1 img").eq(2).css("z-index",1001);
+					$(".fixed-box1 img").eq(0).css({"display":"block"});
+					$(".fixed-box1 img").eq(1).css({"display":"none"});
+					$(".fixed-box1 img").eq(2).css({"display":"none"});
+					$(".fixed-box1 img").eq(0).addClass("animated fadeIn")
+					$(".fixed-box1").removeClass("fixed-box1-fixed");
+						
+
+			 }else if(distance('.home-picture2-before')>1080 && distance('.home-picture2-before')<=6180){
+				$(".fixed-box1").addClass("fixed-box1-fixed");
+				$(".fixed-box2-text3 img").css({"opacity":"0"})
+				
+				if(distance('.home-picture2-before')>1080 && distance('.home-picture2-before')<=2780){
+					$(".fixed-box1 img").eq(0).css("z-index",1006);
+					$(".fixed-box1 img").eq(1).css("z-index",1002);
+					$(".fixed-box1 img").eq(2).css("z-index",1001);
+					$(".fixed-box1 img").eq(0).css({"display":"block"});
+					$(".fixed-box1 img").eq(1).css({"display":"none"});
+					$(".fixed-box1 img").eq(2).css({"display":"none"});
+					$(".fixed-box1 img").eq(0).addClass("animated fadeIn")
+					
+				}else if(distance('.home-picture2-before')>2780 && distance('.home-picture2-before')<=4480){
+					$(".fixed-box1 img").eq(0).css("z-index",1003);
+					$(".fixed-box1 img").eq(1).css("z-index",1006);
+					$(".fixed-box1 img").eq(2).css("z-index",1001);
+					$(".fixed-box1 img").eq(0).css({"display":"none"});
+					$(".fixed-box1 img").eq(1).css({"display":"block"});
+					$(".fixed-box1 img").eq(2).css({"display":"none"});
+					
+					$(".fixed-box1 img").eq(1).addClass("animated fadeIn")
+
+				}else if(distance('.home-picture2-before')>4480 && distance('.home-picture2-before')<=6180){
+					$(".fixed-box1 img").eq(0).css("z-index",1003);
+					$(".fixed-box1 img").eq(1).css("z-index",1001);
+					$(".fixed-box1 img").eq(2).css("z-index",1006);
+					$(".fixed-box1 img").eq(0).css({"display":"none"});
+					$(".fixed-box1 img").eq(1).css({"display":"none"});
+					$(".fixed-box1 img").eq(2).css({"display":"block"});
+					
+					$(".fixed-box1 img").eq(2).addClass("animated fadeIn")
+				}	
+				
+				
+			 }else{
+			 	
+			 	if(distance('.home-picture2-before')>6180){
+					 	$(".fixed-box1 img").eq(0).css({"display":"none"});
+						$(".fixed-box1 img").eq(1).css({"display":"none"});
+						$(".fixed-box1 img").eq(2).css({"display":"none"});
+
+						$(".fixed-box1 img").eq(2).css({"display":"none"});
+					 	$(".fixed-box2-text3 img").css({"opacity":"1"})
+
+				}
+			 
+			 }
+
+			
+			
+		}
+
+		</script>
+</html>

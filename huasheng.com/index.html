@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<script type="text/javascript">
+	
+	if(IsPC()){
+		location.href="html/index.html";
+	}else{
+		location.href="htmlPhone/index.html";
+	}
+
+		
+		function IsPC() {
+		   var userAgentInfo = navigator.userAgent;
+		   var Agents = ["Android", "iPhone",
+		      "SymbianOS", "Windows Phone",
+		      "iPad", "iPod"];
+		   var flag = true;
+		   for (var v = 0; v < Agents.length; v++) {
+		      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		         flag = false;
+		         break;
+		      }
+		   }
+		   return flag;
+		}
+</script>
+	<head>
+		<meta charset="utf-8">
+		<title>华盛官网</title>
+		<link href="favicon.ico" mce_href="favicon.ico" rel="icon" type="image/x-icon">
+	</head> 
+	<script type="text/javascript">
+		
+		
+		
+	</script>
+	<body>
+		
+	</body>
+</html>

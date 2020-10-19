@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../css/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/my-style.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+	</head>
+	<script type="text/javascript">
+		
+	if(IsPC()){
+		
+	}else{
+		location.href="../index.html";
+	}
+
+		
+		function IsPC() {
+		   var userAgentInfo = navigator.userAgent;
+		   var Agents = ["Android", "iPhone",
+		      "SymbianOS", "Windows Phone",
+		      "iPad", "iPod"];
+		   var flag = true;
+		   for (var v = 0; v < Agents.length; v++) {
+		      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		         flag = false;
+		         break;
+		      }
+		   }
+		   return flag;
+		}
+		
+	</script>
+	<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+			<!--定位城市，和ip-->
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/cityList.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/url.js" type="text/javascript" charset="utf-8"></script>
+	<body style="background: #FAFAFA;">
+		<header class="header"></header>
+		<script type="text/javascript">
+			$(function(){
+				$(".header").load("header2.html")
+			})
+		</script>
+		<!--婚礼菜系flag-->
+		<div class="cookie-flag layout cookie-flag-detail">
+			<!--<img src="../img/caixi_flag.png"/>
+			<p class="font20">吉祥如意宴</p>
+			<p class="font20">12999元/桌</p>
+			<p class="font20">冷菜系列 <span class="line-solid"></span></p>-->
+		</div>
+		
+		<!--菜单列表2-->
+		<p class="line-solid-box layout font20">热菜系列 <span class="line-solid"></span></p>
+		<ul class="cookie-detail-list2 layout ">
+			
+			<!--<li><img src="../img/caidan_detail.png"/><p>扬州炒饭</p></li>
+			<li><img src="../img/caidan_detail.png"/><p>扬州炒饭</p></li>
+			<li><img src="../img/caidan_detail.png"/><p>扬州炒饭</p></li>
+			<li><img src="../img/caidan_detail.png"/><p>扬州炒饭</p></li>
+			<li><img src="../img/caidan_detail.png"/><p>扬州炒饭</p></li>-->
+		</ul>
+		
+		
+		<!--菜单列表1-->
+		<p class="line-solid-box layout font20">冷菜系列 <span class="line-solid"></span></p>
+		
+		<ul class="cookie-detail-list layout">
+			<!--<li>
+				<p class="cookie-detail-list_num font24">1</p>
+				<p class="font20">纯色满员先果盘</p>
+				<img src="../img/caidan_detail.png"/>
+			</li>
+			<li>
+				<p class="cookie-detail-list_num font24">1</p>
+				<p class="font20">纯色满员先果盘</p>
+				<img src="../img/caidan_detail.png"/>
+			</li>
+			<li>
+				<p class="cookie-detail-list_num font24">1</p>
+				<p class="font20">纯色满员先果盘</p>
+				<img src="../img/caidan_detail.png"/>
+			</li>
+			<li>
+				<p class="cookie-detail-list_num font24">1</p>
+				<p class="font20">纯色满员先果盘</p>
+				<img src="../img/caidan_detail.png"/>
+			</li>-->
+
+		</ul>
+		
+		<p class="cookie-hint layout font20">菜品更新以当地门店为准</p>
+		<!--底部黑色-->
+		<footer class="footer"></footer>
+		<script type="text/javascript">
+			$(function(){
+				$(".footer").load("footer.html")
+			})
+		</script>
+		
+		
+		<script type="text/javascript">
+			
+			var getHref = window.location.href;
+			let  getId=getHref.split("?")[1].split("=")[1];
+			
+				//菜系列表		
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByWeddingCuisines",
+		    dataType:"json",
+			data:{
+		    	id:getId
+
+
+		    	},    //请求参数		
+		    success: function(data) {
+		    	if(data.status=='503'){
+					window.location.href='error.html'
+				}
+//		    	alert()
+		    console.log("菜系菜单详情111111",data)
+//***********************************************某个菜系标题*******************************************************************	
+   			let cookieTitleList=data.data.HUNLICAIXI;
+   			let cookieTitleStr=""
+   			
+   			cookieTitleStr=`
+				   			<img src="../img/caixi_flag.png"/>
+							<p class="font20">${cookieTitleList.sesmName}</p>
+							<p class="font20">${cookieTitleList.price}元/桌</p>
+							
+   			`
+   			$(".cookie-flag-detail").html(cookieTitleStr)
+//***********************************************冷菜*******************************************************************
+		    let cookieLengList=data.data.LENGCAI;   
+		    let cookieLengStr=""
+		    for(let i=0;i<cookieLengList.length;i++){
+		    	cookieLengStr+=`
+		    				<li>
+								<p class="cookie-detail-list_num font24">${i+1}</p>
+								<p class="font16">${cookieLengList[i].title}</p>
+								<img src="${QiNiu}${cookieLengList[i].url}"/>
+							</li>
+		    				`
+		    				
+		    }
+		    $(".cookie-detail-list").html(cookieLengStr)
+//***********************************************热菜*******************************************************************
+		    let cookieReList=data.data.RECAI;   
+		    let cookieReStr=""
+		    for(let i=0;i<cookieReList.length;i++){
+		    	cookieReStr+=`
+
+		    				<li>
+								<p class="cookie-detail-list_num font24">${i+1}</p>
+								<p class="font16">${cookieReList[i].title}</p>
+								<img src="${QiNiu}${cookieReList[i].url}"/>
+							</li>
+		    				`
+		    				
+		    }
+		    $(".cookie-detail-list2").html(cookieReStr)		    
+//		    swiper-wrapper
+		    
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});
+		</script>
+		
+	</body>
+</html>

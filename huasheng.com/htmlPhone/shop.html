@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../css/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/my-style.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+	</head>
+	
+			<script type="text/javascript">
+		
+	if(IsPC()){
+		location.href="../index.html";
+	}else{
+		
+	}
+
+		
+		function IsPC() {
+		   var userAgentInfo = navigator.userAgent;
+		   var Agents = ["Android", "iPhone",
+		      "SymbianOS", "Windows Phone",
+		      "iPad", "iPod"];
+		   var flag = true;
+		   for (var v = 0; v < Agents.length; v++) {
+		      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		         flag = false;
+		         break;
+		      }
+		   }
+		   return flag;
+		}
+		
+	</script>
+	<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+			<!--定位城市，和ip-->
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/cityList.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/url.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		/*banner小点*/
+		.swiper-pagination-bullet{
+		    width:20px;
+		    height:20px;
+		}
+		.swiper-pagination-bullet-active{
+		    background: #FD5F57;
+		}
+	</style>
+	<body style="background: #FAFAFA;">
+		<header class="header"></header>
+		<script type="text/javascript">
+			$(function(){
+				$(".header").load("header2.html")
+			})
+		</script>
+		<!--轮播图-->
+		<div class="home-banner" style="width: 1400px;">
+			   <!---------------轮播图---------------------->
+		  <div id="swiper_container" class="swiper-container  swiper-container2" style="width: 1400px;">
+		    <div class="swiper-wrapper swiper-wrapper2" style="width: 1400px;">
+		    	<!--<div class="swiper-slide" style=" background: url(../img/banner.png);">
+				</div>
+				<div class="swiper-slide" style=" background: url(../img/banner2.png)">
+				</div>-->
+		    </div>
+			<div class="swiper-pagination" style=""></div>
+		
+		  </div>
+		</div>
+		</div>	
+		<div class="all-shop">
+			
+		
+		
+		
+		
+		
+		<!--婚礼菜系flag, 此处可以公用-->
+		<!--<div class="cookie-flag layout2 cookie-flag-detail" style="margin-top: 20px;">
+			<img src="../img/shop_flag.png"/>
+			<p class="font20">CBD店</p>
+		</div>
+		
+		<ul class="shop-list shop-list2 font20 layout2">
+			<li>
+				<img src="../img/shop_ex1.png"/>
+				<div class="shop-list-text">
+					<div class="shop-list-text-box">
+						<p class="font26">香榭丽厅</p>
+						<p>层高9米/全场无柱/巨型LED屏幕 </p>
+						<p>起订价格：3988元/桌</p>
+						<p>容纳桌数：24桌</p>
+						<p>承办场数：91场</p>
+						<p>场地地址：北京朝阳区康营中街9号华盛财富婚礼生态公园内</p>
+					</div>
+					
+
+				</div>
+			</li>
+			<li>
+				<img src="../img/shop_ex1.png"/>
+				<div class="shop-list-text">
+					<div class="shop-list-text-box">
+						<p class="font26">香榭丽厅</p>
+						<p>层高9米/全场无柱/巨型LED屏幕 </p>
+						<p>起订价格：3988元/桌</p>
+						<p>容纳桌数：24桌</p>
+						<p>承办场数：91场</p>
+						<p>场地地址：北京朝阳区康营中街9号华盛财富婚礼生态公园内</p>
+					</div>
+					
+
+				</div>
+			</li>
+			
+			<li>
+				<img src="../img/shop_ex1.png"/>
+				<div class="shop-list-text">
+					<div class="shop-list-text-box">
+						<p class="font26">香榭丽厅</p>
+						<p>层高9米/全场无柱/巨型LED屏幕 </p>
+						<p>起订价格：3988元/桌</p>
+						<p>容纳桌数：24桌</p>
+						<p>承办场数：91场</p>
+						<p>场地地址：北京朝阳区康营中街9号华盛财富婚礼生态公园内</p>
+					</div>
+					
+
+				</div>
+			</li>
+		</ul>-->
+		<!--婚礼菜系flag, 此处可以公用-->
+		<!--<div class="cookie-flag layout2 cookie-flag-detail" style="margin-top: 20px;">
+			<img src="../img/shop_flag.png"/>
+			<p class="font20">燕西台</p>
+		</div>
+		
+		<ul class="shop-list shop-list2 font20 layout2">
+			<li>
+				<img src="../img/shop_ex1.png"/>
+				<div class="shop-list-text">
+					<div class="shop-list-text-box">
+						<p class="font26">香榭丽厅</p>
+						<p>层高9米/全场无柱/巨型LED屏幕 </p>
+						<p>起订价格：3988元/桌</p>
+						<p>容纳桌数：24桌</p>
+						<p>承办场数：91场</p>
+						<p>场地地址：北京朝阳区康营中街9号华盛财富婚礼生态公园内</p>
+					</div>
+					
+
+				</div>
+			</li>
+			<li>
+				<img src="../img/shop_ex1.png"/>
+				<div class="shop-list-text">
+					<div class="shop-list-text-box">
+						<p class="font26">香榭丽厅</p>
+						<p>层高9米/全场无柱/巨型LED屏幕 </p>
+						<p>起订价格：3988元/桌</p>
+						<p>容纳桌数：24桌</p>
+						<p>承办场数：91场</p>
+						<p>场地地址：北京朝阳区康营中街9号华盛财富婚礼生态公园内</p>
+					</div>
+					
+
+				</div>
+			</li>
+			
+			<li>
+				<img src="../img/shop_ex1.png"/>
+				<div class="shop-list-text">
+					<div class="shop-list-text-box">
+						<p class="font26">香榭丽厅</p>
+						<p>层高9米/全场无柱/巨型LED屏幕 </p>
+						<p>起订价格：3988元/桌</p>
+						<p>容纳桌数：24桌</p>
+						<p>承办场数：91场</p>
+						<p>场地地址：北京朝阳区康营中街9号华盛财富婚礼生态公园内</p>
+					</div>
+					
+
+				</div>
+			</li>
+		</ul>-->
+		</div>
+		
+		<!--底部黑色-->
+		<footer class="footer"></footer>
+		<script type="text/javascript">
+			$(function(){
+				$(".footer").load("footer.html")
+			})
+		</script>
+	</body>
+	<script type="text/javascript">
+/****************************shop banner******************************************/  
+			var pamasCitys= makeCity()
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByOws",
+		    dataType:"json",
+			data:{
+				"cityCode":pamasCitys,
+
+		    	},    //请求参数		
+		    success: function(data) {
+		    if(data.status=='503'){
+					window.location.href='error.html'
+				}
+		    console.log("shop conentet",data)
+		    
+		    let shopList=data.data;   
+		    let shopStr=""
+		    for(let i=0;i<shopList.length;i++){
+		    	shopStr+=`
+
+					<div class="cookie-flag layout2 cookie-flag-detail" style="margin-top: -10px;">
+						<img src="../img/shop_flag.png"/>
+						<p class="font20">${shopList[i].storeName}</p>
+					</div>
+					<ul class="shop-list font20 layout2">
+						
+							${ 
+								showShopList(shopList[i].list)
+								}
+							
+							
+						
+						
+						
+					</ul>
+		`
+		    				
+		    }
+		    $(".all-shop").html(shopStr)
+//		    swiper-wrapper
+		    
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});		
+		
+		
+		function showShopList(list){
+			let strs="";
+
+				for(var i=0;i<list.length;i++){
+					
+						strs+=`
+							<li>
+								<img src="${QiNiu}${list[i].url}"/>
+								<div class="shop-list-text">
+									<div class="shop-list-text-box">
+										<p class="font26">${list[i].hall}</p>
+										<p>${list[i].hall} </p>
+										<p>起订价格：${list[i].minimumPrice}</p>
+										<p>容纳桌数：${list[i].maxTable}</p>
+										<p>承办场数：${list[i].undertakeNumber}</p>
+										<p>场地地址：${list[i].siteAddress}</p>
+									</div>
+									
+				
+								</div>
+							</li>						  `
+					
+					
+				}
+				return strs;
+		}
+/****************************shop content******************************************/  
+			
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByDetailsCarousel",
+		    dataType:"json",
+			data:{
+				"cityCode":pamasCitys,
+				"type":"5"
+		    	},    //请求参数		
+		    success: function(data) {
+		   
+		    console.log("shop banner",data)
+		    
+
+		    let bannerList=data.data;   
+		    let bannerStr=""
+		    for(let i=0;i<bannerList.length;i++){
+		    	bannerStr+=`
+		    				<div class="swiper-slide" style=" background: url(${QiNiu}${bannerList[i].url}); background-position:center center ; background-size:100% 100% ;"></div>
+		    				`
+		    				
+		    }
+		    $(".swiper-wrapper").html(bannerStr)
+		    
+		    swiperMove(bannerList)
+//		    swiper-wrapper
+		    
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});			
+	</script>
+</html>

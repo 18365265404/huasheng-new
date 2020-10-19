@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+		<meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+		<title></title>
+		<link href="../css/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/my-style.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+	</head>
+			<script type="text/javascript">
+		
+	if(IsPC()){
+		location.href="../index.html";
+	}else{
+		
+	}
+
+		
+		function IsPC() {
+		   var userAgentInfo = navigator.userAgent;
+		   var Agents = ["Android", "iPhone",
+		      "SymbianOS", "Windows Phone",
+		      "iPad", "iPod"];
+		   var flag = true;
+		   for (var v = 0; v < Agents.length; v++) {
+		      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		         flag = false;
+		         break;
+		      }
+		   }
+		   return flag;
+		}
+		
+	</script>
+	<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=Whx6Yj0BRwmThtBsRFgGUypivemF6gt9"></script>
+	<script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+	
+			<!--定位城市，和ip-->
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/cityList.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+  
+    /*百度地图接口样式*/
+    .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+    .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+  </style>
+	<body style="background: #FAFAFA;">
+		<header class="header"></header>
+		<script type="text/javascript">
+			$(function(){
+				$(".header").load("header2.html")
+			})
+		</script>
+		
+		<div class="aboutUs-tab-box layout2">
+			<ul class="aboutUs-tab font20">
+				<li><span class="about-click">公司简介</span></li>
+				<li><span>服务团队</span></li>
+				<li><span>全国分店</span></li>
+				<li><span>联系我们</span></li>
+			</ul>
+		
+		</div>
+		<div class="aboutUs-tab-content"></div>
+
+		<!--底部黑色-->
+		<footer class="footer"></footer>
+		<script type="text/javascript">
+			$(function(){
+				$(".footer").load("footer.html")
+			})
+		</script>
+	</body>
+	<script type="text/javascript">
+		//默认加载第一个
+		$(".aboutUs-tab-content").load("intro.html")
+		$(".aboutUs-tab li").click(function(){
+
+			$(".aboutUs-tab li span").removeClass("about-click")
+			$(this).find("span").addClass("about-click")
+			let index=$(this).index()
+			switch (index){
+				case 0:
+					$(".aboutUs-tab-content").load("intro.html")
+					break;
+				case 1:
+					$(".aboutUs-tab-content").load("team.html")
+					break;
+				case 2:
+					$(".aboutUs-tab-content").load("distribute.html")
+					break;	
+				case 3:
+					$(".aboutUs-tab-content").load("contact.html")
+					break;
+				default:
+					break;
+			}
+		})
+	</script>
+</html>

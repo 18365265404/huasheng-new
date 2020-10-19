@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../css/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/my-style.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+	</head>
+	<script type="text/javascript">
+		
+	if(IsPC()){
+		location.href="../index.html";
+	}else{
+		
+	}
+
+		
+		function IsPC() {
+		   var userAgentInfo = navigator.userAgent;
+		   var Agents = ["Android", "iPhone",
+		      "SymbianOS", "Windows Phone",
+		      "iPad", "iPod"];
+		   var flag = true;
+		   for (var v = 0; v < Agents.length; v++) {
+		      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		         flag = false;
+		         break;
+		      }
+		   }
+		   return flag;
+		}
+		
+	</script>
+	<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+				<!--定位城市，和ip-->
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/url.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/cityList.js" type="text/javascript" charset="utf-8"></script>
+
+	<style type="text/css">
+		/*banner小点*/
+		.swiper-pagination-bullet{
+		    width:20px;
+		    height:20px;
+		}
+		.swiper-pagination-bullet-active{
+		    background: #FD5F57;
+		}
+	</style>
+	<body style="background: #FAFAFA;">
+		<header class="header"></header>
+		<script type="text/javascript">
+			$(function(){
+				$(".header").load("header2.html")
+			})
+		</script>
+		<!--轮播图-->
+		<div class="home-banner" style="width: 1400px;">
+			   <!---------------轮播图---------------------->
+		  <div id="swiper_container" class="swiper-container  swiper-container2" style="width: 1400px;">
+		    <div class="swiper-wrapper swiper-wrapper2" style="width: 1400px;">
+		    	<!--<div class="swiper-slide" style=" background: url(../img/banner.png);">
+				</div>
+				<div class="swiper-slide" style=" background: url(../img/banner2.png)">
+				</div>-->
+		    </div>
+			<div class="swiper-pagination" style=""></div>
+		
+		  </div>
+		</div>
+
+		
+		<div class="baby-content">
+
+		</div>
+		
+		<ul class="baby-img-list layout" style="margin-left: 3%;">
+<!--			
+			<li>
+				<img src="../img/baby_ex3.png"/>
+				<p class="font20">宝宝主持人</p>
+				<p class="font20">
+					为孩子们请来宝宝宴最幽默的主持人
+					在宴会过程中，带领孩子们参与派对
+					中的各种环节。
+				</p>
+			</li>-->
+		
+		</ul>
+		<!--底部黑色-->
+		<footer class="footer"></footer>
+		<script type="text/javascript">
+			$(function(){
+				$(".footer").load("footer.html")
+			})
+		</script>
+
+	</body>
+<!--轮播图-->
+<script src="../js/banner.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+/****************************baby banner******************************************/  
+
+			var pamasCitys= makeCity()
+
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByDetailsCarousel",
+		    dataType:"json",
+			data:{
+//		    	"cityCode":Pcity
+				"cityCode":pamasCitys,
+				"type":"3"
+		    	},    //请求参数		
+		    success: function(data) {
+		    if(data.status=='503'){
+					window.location.href='error.html'
+				}
+		    console.log("宝宝宴banner",data)
+		    
+		    let bannerList=data.data
+			let bannerStr=""
+		    for(let i=0;i<bannerList.length;i++){
+		    	bannerStr+=`
+		    				<div class="swiper-slide" style=" background: url(${QiNiu}${bannerList[i].url}); background-position:center center ; background-size:100% 100% ;"></div>
+		    				`
+		    				
+		    }
+		    $(".swiper-wrapper").html(bannerStr)
+//		    swiper-wrapper
+		    swiperMove(bannerList)
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});
+			
+			
+/****************************baby content******************************************/  
+			var getHref = window.location.href;
+			let  getId=getHref.split("?")[1].split("=")[1];
+//			alert(getId)
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByOtherPartyDetails",
+		    dataType:"json",
+			data:{
+					id:getId
+		    	},    //请求参数		
+		    success: function(data) {
+		   
+		    console.log("宝宝宴conentet",data.data)
+		    if(data.data.length>=3){
+		    	
+		    
+		    let babyList=data.data;   
+		    let babyCStr=`
+		    	<div class="baby-article1 layout2" style = "margin-left: 1%">
+					<img src="${QiNiu}${babyList[0].url}"/>
+					<div class="baby-article1-text">
+						<p class="font20">
+							${babyList[0].description}
+						</p>
+					</div>
+				</div>
+				<div class="baby-article2 layout2" style = "margin-left: 1%">
+					<div class="baby-article2-text">
+						<span class="font26">${babyList[1].title}</span>
+						<p class="font20">
+							${babyList[1].description}
+						</p>
+					</div>
+					<img src="${QiNiu}${babyList[1].url}"/>
+					
+				</div>
+				<div class="baby-article3-box" style="width:1400px;margin-left: 0.5%">
+					<div class="baby-article3 layout2">
+						<img src="${QiNiu}${babyList[2].url}"/>
+						<div class="baby-article3-text">
+							<span class="font26">${babyList[2].title}</span>
+							<p class="font20">
+							${babyList[2].description}
+							</p>
+						</div>
+					</div>
+				</div>
+		    `
+		    
+		    
+		    $(".baby-content").html(babyCStr)
+		    let  babyFlist= babyList.slice(3) //去除前三条后的数据
+		    let babyFstr=""
+			
+		    console.log(babyFlist,'10000000000000000000000000000000000000000')
+		    
+//			return
+		    for(let i=0;i<babyFlist.length;i++){
+		    	babyFstr+=`
+						<li>
+							<img src="${QiNiu}${babyFlist[i].url}"/>
+							<p class="font20">${babyFlist[i].title}</p>
+							<p class="font20">
+								${babyFlist[i].description}
+							</p>
+						</li>	
+						`
+		    				
+		    }
+		    $(".baby-img-list").html(babyFstr)
+		    
+		    }
+//		    swiper-wrapper
+		    
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});			
+</script>
+</html>

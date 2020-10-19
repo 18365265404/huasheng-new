@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+		<meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+		<title></title>
+		<link href="../css/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/my-style.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+	</head>
+	<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=Whx6Yj0BRwmThtBsRFgGUypivemF6gt9"></script>
+	<script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/url.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+  
+    /*百度地图接口样式*/
+    .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+    .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+  </style>
+	<body>
+		<div class="contact-content layout2">
+			
+			<div class="contact-map">
+				<!--百度地图容器-->
+				<div id="allmap" style="width: 100%; height: 100%;"></div>
+			</div>
+			
+			<div class="contact-content-text font20">
+				<!--<p>公司名称：上海聚航信息科技有限公司(总部)</p>
+				<p>联系方式：400-775-5257</p>
+				<p>公司地址：上海黄浦区河南南路33号10楼</p>
+				<p>邮政编码：200001</p>-->
+			</div>
+		</div>
+	</body>
+	
+	<script src="../js/map.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+/****************************contact content******************************************/  
+
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByContactUs",
+		    dataType:"json",
+			data:{
+
+		    	},    //请求参数		
+		    success: function(data) {
+		   if(data.status=='503'){
+					window.location.href='error.html'
+				}
+		    console.log("contact conentet",data)
+		    
+
+		    let contactC=data.data; 
+		    let contactStr=""
+		    	contactStr=`
+						<p>公司名称：${contactC.companyName}</p>
+						<p>联系方式：${contactC.contactWay}</p>
+						<p>公司地址：${contactC.companyAddress}</p>
+						<p>邮政编码：${contactC.postalcode}</p>
+				`
+		    				
+		    $(".contact-content-text").html(contactStr)
+//		    swiper-wrapper
+		    
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});	
+	</script>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../css/favicon.ico" rel="icon" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/my-style.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+	</head>
+			<script type="text/javascript">
+		
+	if(IsPC()){
+		location.href="../index.html";
+	}else{
+		
+	}
+
+		
+		function IsPC() {
+		   var userAgentInfo = navigator.userAgent;
+		   var Agents = ["Android", "iPhone",
+		      "SymbianOS", "Windows Phone",
+		      "iPad", "iPod"];
+		   var flag = true;
+		   for (var v = 0; v < Agents.length; v++) {
+		      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		         flag = false;
+		         break;
+		      }
+		   }
+		   return flag;
+		}
+		
+	</script>
+	<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper-4.3.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--定位城市，和ip-->
+	<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script> 
+	<script src="../js/utils.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/cityList.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/url.js" type="text/javascript" charset="utf-8"></script>
+	
+	<style type="text/css">
+		/*banner小点*/
+		.swiper-pagination-bullet{
+		    width:20px;
+		    height:20px;
+		}
+		.swiper-pagination-bullet-active{
+		    background: #FD5F57;
+		}
+	</style>
+	<body style="background: #FAFAFA;">
+		<header class="header"></header>
+		<script type="text/javascript">
+			$(function(){
+				$(".header").load("header2.html")
+			})
+		</script>
+		<!--轮播图-->
+		<div class="home-banner" style="width: 1400px;">
+			   <!---------------轮播图---------------------->
+		  <div id="swiper_container" class="swiper-container  swiper-container2" style="width: 1400px;">
+		    <div class="swiper-wrapper swiper-wrapper2" style="width: 1400px;">
+		    	<!--<div class="swiper-slide" style=" background: url(../img/banner.png);">
+				</div>
+				<div class="swiper-slide" style=" background: url(../img/banner2.png)">
+				</div>-->
+		    </div>
+			<div class="swiper-pagination" style=""></div>
+		
+		  </div>
+		</div>
+		<!--婚礼菜系flag-->
+		<div class="cookie-flag layout2">
+			<img src="../img/bg_navigation2.png"/>
+		</div>
+
+		<ul class="cookieList layout" style="margin-left: 3%;">
+			<!--<li onclick="(window.location.href='cooking_detail.html')">
+				<img src="../img/cookie_ex.png"/>
+				<div class="cookieList-infor">
+					<p><span class="font20">吉祥如意宾馆</span><span class="font24">1200元<span class="font18">/桌</span></span></p>
+					<img class="cookieList-infor-jiantou" src="../img/jiantou_right.png"/>
+				</div>
+			</li>
+			
+			<li>
+				<img src="../img/cookie_ex.png"/>
+				<div class="cookieList-infor">
+					<p><span class="font20">吉祥如意宾馆</span><span class="font24">1200元<span class="font18">/桌</span></span></p>
+					<img class="cookieList-infor-jiantou" src="../img/jiantou_right.png"/>
+				</div>
+			</li>
+			<li>
+				<img src="../img/cookie_ex.png"/>
+				<div class="cookieList-infor">
+					<p><span class="font20">吉祥如意宾馆</span><span class="font24">1200元<span class="font18">/桌</span></span></p>
+					<img class="cookieList-infor-jiantou" src="../img/jiantou_right.png"/>
+				</div>
+			</li>
+			<li>
+				<img src="../img/cookie_ex.png"/>
+				<div class="cookieList-infor">
+					<p><span class="font20">吉祥如意宾馆</span><span class="font24">1200元<span class="font18">/桌</span></span></p>
+					<img class="cookieList-infor-jiantou" src="../img/jiantou_right.png"/>
+				</div>
+			</li>
+			<li>
+				<img src="../img/cookie_ex.png"/>
+				<div class="cookieList-infor">
+					<p><span class="font20">吉祥如意宾馆</span><span class="font24">1200元<span class="font18">/桌</span></span></p>
+					<img class="cookieList-infor-jiantou" src="../img/jiantou_right.png"/>
+				</div>
+			</li>
+			<li>
+				<img src="../img/cookie_ex.png"/>
+				<div class="cookieList-infor">
+					<p><span class="font20">吉祥如意宾馆</span><span class="font24">1200元<span class="font18">/桌</span></span></p>
+					<img class="cookieList-infor-jiantou" src="../img/jiantou_right.png"/>
+				</div>
+			</li>
+			<li>
+				<img src="../img/cookie_ex.png"/>
+				<div class="cookieList-infor">
+					<p><span class="font20">吉祥如意宾馆</span><span class="font24">1200元<span class="font18">/桌</span></span></p>
+					<img class="cookieList-infor-jiantou" src="../img/jiantou_right.png"/>
+				</div>
+			</li>
+			<li>
+				<img src="../img/cookie_ex.png"/>
+				<div class="cookieList-infor">
+					<p><span class="font20">吉祥如意宾馆</span><span class="font24">1200元<span class="font18">/桌</span></span></p>
+					<img class="cookieList-infor-jiantou" src="../img/jiantou_right.png"/>
+				</div>
+			</li>
+			<li>
+				<img src="../img/cookie_ex.png"/>
+				<div class="cookieList-infor">
+					<p><span class="font20">吉祥如意宾馆</span><span class="font24">1200元<span class="font18">/桌</span></span></p>
+					<img class="cookieList-infor-jiantou" src="../img/jiantou_right.png"/>
+				</div>
+			</li>
+			-->
+		</ul>
+		
+		<!--底部黑色-->
+		<footer class="footer"></footer>
+		<script type="text/javascript">
+			$(function(){
+				$(".footer").load("footer.html")
+			})
+		</script>
+
+	</body>
+<!--轮播图-->
+<script src="../js/banner.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/****************************cooking banner******************************************/  
+
+			var pamasCitys= makeCity()
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selByDetailsCarousel",
+		    dataType:"json",
+			data:{
+//		    	"cityCode":Pcity
+				"cityCode":pamasCitys,
+				"type":"2"
+		    	},    //请求参数		
+		    success: function(data) {
+		    if(data.status=='503'){
+					window.location.href='error.html'
+				}
+		    console.log("菜系菜单banner",data)
+		    
+		    let bannerList=data.data;   
+		    let bannerStr=""
+		    for(let i=0;i<bannerList.length;i++){
+		    	bannerStr+=`
+		    				<div class="swiper-slide" style=" background: url(${QiNiu}${bannerList[i].url}); background-position:center center ; background-size:100% 100% ;"></div>
+		    				`
+		    				
+		    }
+		    $(".swiper-wrapper").html(bannerStr)
+//		    swiper-wrapper
+		    swiperMove(bannerList)
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});
+	//菜系列表		
+			$.ajax({
+		    type:"post",    //请求方式
+		    url:myServer+"PcApi/selBySesm",
+		    dataType:"json",
+			data:{
+//		    	"cityCode":Pcity
+				"cityCode":pamasCitys,
+
+		    	},    //请求参数		
+		    success: function(data) {
+//		    	alert()
+		    console.log("菜系菜单列表",data)
+//		    return
+		    let cookieList=data.data;   
+		    let cookieStr=""
+		    for(let i=0;i<cookieList.length;i++){
+		    	cookieStr+=`
+		    				<li onclick="(window.location.href='cooking_detail.html?id=${cookieList[i].id}')">
+								<img src="${QiNiu}${cookieList[i].url}"/>
+								<div class="cookieList-infor">
+									<p><span class="font20">${cookieList[i].sesmName}</span><span class="font24">${cookieList[i].price}元<span class="font18">/桌</span></span></p>
+									<img style="height:14px;width:26px" class="cookieList-infor-jiantou" src="../img/jiantou_right.png"/>
+								</div>
+							</li>
+		    				`
+		    				
+		    }
+		    $(".cookieList").html(cookieStr)
+//		    swiper-wrapper
+		    
+		    },
+		    error: function() {
+		        //请求出错处理
+		    	}
+			});
+</script>
+</html>

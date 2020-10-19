@@ -1,0 +1,100 @@
+<!--首页的头部-->
+		<div class="head-box1">
+			<div class="head-box2">
+				<header class="layout2 head1">
+				<img src="../img/logo.png"/>
+				<ul id="head-nav" class="head-nav">
+					<li><p><a style="text-decoration: none;" class="cityName">城市</a><span>▼</span></p>
+						<ul id="head-menue" class="head-menue">
+								<!--<li><a>还礼案例1</a></li>
+								<li><a>还礼案例2</a></li>
+								<li><a>还礼案例3</a></li>
+								<li><a>还礼案例4</a></li>-->
+						</ul>
+					</li>
+					<li><a href="index.html">首页</a>   </li>
+					<li class="case"><a href="case.html">婚礼案例</a></li>
+					<li class="cooking"><a href="cooking.html">婚礼菜系</a></li>
+					<li class="shop"><a href="shop.html">在线看店</a></li>
+					<li class="aboutUs"><a href="aboutUs.html">关于我们</a></li>
+				</ul>
+	
+				</header>
+			</div>
+			
+		
+
+		
+		<script type="text/javascript">
+			function goTop(){
+				
+				$('html ,body').animate({scrollTop: 0}, 300);
+			}
+		</script>
+		
+				<!--定位获取城市和IP  &&  和城市切换-->	
+		<script type="text/javascript">
+			
+			let seeionCity=sessionStorage.getItem('hsgw_cityName')  //缓存城市
+			let posCity=returnCitySN["cname"];  //真实定位地址
+//			let posCity="绍兴市";  //模拟定位地址
+//			let posCity="没有门店的地址";  
+
+			console.log("position城市",posCity,cityCode(posCity),"盛官网")
+			
+			if(!seeionCity){ //缓存城市为空显示定位城市
+				if(cityCode(posCity)=="" || cityCode(posCity)==null){//如果定位城市没有门店则默认为上海
+					console.log(1111111111111111)
+					$(".cityName").html("上海市")
+//					alert('无门店')
+					sessionStorage.setItem('hsgw_cityName','上海市')
+				}else{
+//					alert('有门店----'+posCity)
+					$(".cityName").html(posCity)
+					sessionStorage.setItem('hsgw_cityName',posCity)
+					console.log(22222222222222222)
+				}
+				
+			}else{//有缓存城市用缓存城市
+				$(".cityName").html(seeionCity)
+				console.log(3333333333333)
+			}
+			function chooseCity(city,code){
+		       	sessionStorage.setItem('hsgw_cityName',city)
+		        let urlStr=window.location.href.split("/").pop();
+				
+		        window.location.href='index.html'
+		    
+			}
+
+//确定头颜色
+		var getHref = window.location.href;
+			let  getUrl=getHref.split("/").pop();
+			
+			switch (getUrl){
+				case "case.html":
+					$(".case").css({border:"2px solid #D56452"})
+					$(".case a").css({color:"#D56452"})
+					break;
+				case "cooking.html":
+					$(".cooking").css({border:"2px solid #D56452"})
+					$(".cooking a").css({color:"#D56452"})
+					break;
+				case "shop.html":
+					$(".shop").css({border:"2px solid #D56452"})
+					$(".shop a").css({color:"#D56452"})
+					break;
+				case "aboutUs.html":
+					$(".aboutUs").css({border:"2px solid #D56452"})
+					$(".aboutUs a").css({color:"#D56452"})
+					break;	
+				default:
+					break;
+			}
+			if(getUrl=="index.html"){
+//				alert($(".home"))
+				$(".home").css({border:"2px solid #D56452"})
+				$(".home a").css({color:"#D56452"})
+			}
+		</script>		
+		</div>
